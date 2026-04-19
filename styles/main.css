@@ -1,0 +1,424 @@
+/* Общее =============================================================================================================*/
+html, body {
+    overflow: hidden;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: 'main2';
+    src: url('../fonts/GreatVibes-Regular.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'main';
+    src: url('../fonts/ChironGoRoundTC-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+.background_main {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-image: url("../images/background_main.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+}
+
+/* Левая колонка =====================================================================================================*/
+.left_column {
+    width: 65px;
+    height: 100vh;
+    background-color: white;
+    outline: 3px solid #2c84af;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: width 0.4s ease;
+    flex-shrink: 0;
+    position: relative;
+    margin-left: -6px;
+}
+
+.left_column:hover {
+    width: 250px;
+}
+
+.profile {
+    width: 58px;
+    height: 63px;
+    margin-top: 10px;
+    margin-left: 4px;
+}
+
+.first_link {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    position: absolute;
+    top: 30px;
+    left: 75px;
+    font-weight: 800;
+    font-size: 25px;
+    font-family: "main", "Segoe UI";
+    white-space: nowrap;
+    padding-bottom: 5px;
+    display: inline-block;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.first_link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #2c84af;
+    transition: width 0.3s ease;
+}
+
+.first_link_active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.first_link_active::after {
+    width: 100%;
+}
+
+.content {
+    flex: 1;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    height: 100vh;
+    
+    scrollbar-width: none;
+}
+
+.content::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+/* Сетка =============================================================================================================*/
+.placeholder {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px;
+    margin-top: 80px;
+    margin-right: 60px;
+    margin-left: 60px;
+    margin-bottom: 80px;
+}
+
+/* Карточки */
+.holder_diet {
+    background-image: url("../images/diet.jpg");
+    background-position: left 0px top -100px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 16px;
+    padding: 30px;
+    height: 200px;
+    overflow-y: auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    outline: 3px solid #2c84af;
+    position: relative;
+    color: #2c84af;
+    overflow: hidden;
+}
+
+/* Полностью белое полотно */
+.holder_diet::before {
+    content: '';
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: 0;
+}
+
+/* Контент поверх белого полотна */
+.holder_diet > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Стили текста */
+.holder_diet h3 {
+    margin: 0 0 10px 0;
+    color: #2c84af;
+}
+
+.holder_diet p {
+    color: #333;
+    margin: 0;
+}
+
+.holder_diet:hover, .holder_program:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.empty_holder {
+    width: 100%;
+    height: 200px;
+    visibility: hidden;
+    padding: 30px;
+    box-sizing: border-box;
+    background: transparent;
+    pointer-events: none;
+}
+
+/* Кнопка добавления */
+.add {
+    width: 150px;
+    height: 50px;
+    color: black;
+    background: white;
+    border: 2px solid #2c84af;
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: "main", "Segoe UI";
+    font-weight: 600;
+    z-index: 10;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    transition: all 0.3s ease;
+}
+
+.add:hover {
+    background: #2c84af;
+    color: white;
+    transform: scale(1.05);
+}
+
+.add:active {
+    transform: scale(0.95);
+}
+
+/* Карточка диет======================================================================================================*/
+
+
+.holder_diet {
+    background-image: url("../images/diet.jpg");
+    background-position: left 0px top -100px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 16px;
+    padding: 30px;
+    height: 200px;
+    overflow-y: auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    outline: 3px solid #2c84af;
+    position: relative;
+    color: #2c84af;
+    overflow: hidden;
+}
+
+/* Полностью белое полотно */
+.holder_diet::before {
+    content: '';
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: 0;
+}
+
+/* Контент поверх белого полотна */
+.holder_diet > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Стили текста */
+.holder_diet h3 {
+    margin: 0 0 10px 0;
+    color: #2c84af;
+}
+
+.holder_diet p {
+    color: #333;
+    margin: 0;
+}
+
+.holder_diet:hover, .holder_program:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.name_diet{
+    font-family: "main", "Segoe UI";
+    color: black !important;
+    position: absolute;
+    left: 50%;
+    top: 25%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+}
+.author_diet{
+    font-family: "main", "Segoe UI";
+    color: black !important;
+    position: absolute;
+    left: 15%;
+    top: 38%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+}
+.level_diet{
+    color: black !important;
+    font-family: "main", "Segoe UI";
+    position: absolute;
+    left: 15%;
+    top: 57%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+}
+.content_diet{
+    color: black !important;
+    font-family: "main", "Segoe UI";
+    position: absolute;
+    left: 15%;
+    top: 68%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+}
+
+
+/* Карточки программ==================================================================================================*/
+
+.holder_program {
+    background-image: url("../images/program.jpg");
+    background-position: left 0px top -100px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 16px;
+    padding: 30px;
+    height: 200px;
+    overflow-y: auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    outline: 3px solid #2c84af;
+    position: relative;
+    color: #2c84af;
+    overflow: hidden;
+}
+
+.holder_program::before {
+    content: '';
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: 0;
+}
+
+.holder_program > * {
+    position: relative;
+    z-index: 1;
+}
+
+.holder_program h3 {
+    margin: 0 0 10px 0;
+    color: #2c84af;
+}
+
+.holder_program p {
+    color: #333;
+    margin: 0;
+}
+
+.holder_program:hover, .holder_program:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.name_program{
+    font-family: "main", "Segoe UI";
+    color: black !important;
+    position: absolute;
+    left: 50%;
+    top: 25%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+}
+.author_program{
+    font-family: "main", "Segoe UI";
+    color: black !important;
+    position: absolute;
+    left: 15%;
+    top: 38%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+}
+.level_program{
+    color: black !important;
+    font-family: "main", "Segoe UI";
+    position: absolute;
+    left: 15%;
+    top: 57%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+}
+.content_program{
+    color: black !important;
+    font-family: "main", "Segoe UI";
+    position: absolute;
+    left: 15%;
+    top: 68%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+}
+
+
+/* Адаптивность ======================================================================================================*/
+@media (max-width: 1200px) {
+    .placeholder {
+        grid-template-columns: repeat(3, 1fr);
+        margin-right: 40px;
+        margin-left: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .placeholder {
+        grid-template-columns: repeat(2, 1fr);
+        margin-right: 20px;
+        margin-left: 20px;
+    }
+    
+    .left_column {
+        width: 50px;
+    }
+    
+    .left_column:hover {
+        width: 180px;
+    }
+    
+    .first_link {
+        font-size: 18px;
+        left: 60px;
+    }
+}

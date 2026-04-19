@@ -1,0 +1,553 @@
+/* ДЛЯ ВСЕГО=================================================================================================================== */
+
+
+
+
+html, body {
+    overflow: hidden;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+@font-face {
+    font-family: 'main2';
+    src: url('../fonts/GreatVibes-Regular.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'main1';
+    src: url('../fonts/Nunito-Regular.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'main';
+    src: url('../fonts/ChironGoRoundTC-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+.background_auth {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-image: url("../images/background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.box-auth{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 450px;
+    height: 450px;
+    transform: translate(-50%, -50%);
+    outline: 3px solid #5aa9d0;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    animation: slideUp 0.7s ease-out
+}
+
+.text{
+    font-family: "main", "Segoe UI";
+    color: black;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+}
+.eye_button{
+    background-image: url("../images/eye.jpg");
+    width: 55px;
+    height: 40px;
+    background-size: cover;
+    background-position: center;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    position: absolute;
+    top: 60%;
+    left: 86%;
+    transform: translate(-50%, -50%);
+    transform: scale(0.7);
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+}
+
+.button{
+    font-family: "main", "Segoe UI";
+    color: black;
+    width: 150px;
+    height: 30px;
+    position: absolute;
+    top: 79%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    font-weight: 600;
+    outline: none;
+    border-radius: 5px;
+    background: none; 
+    border: 2px solid #5aa9d0;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+}
+.button:hover {
+    border: 2px solid #5096b8;
+}
+.button:active {
+    border: 2px solid #3e7691;
+    outline: none;
+    box-shadow: 0 3px 15px rgba(90, 169, 208, 0.3);
+    font-weight: 350;
+}
+.text--error{
+    color: #d33c3c;
+    font-weight: 500;
+    position: absolute;
+    top: 69%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    padding-left: 50px;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+}
+
+.button-active {
+    border: 2px solid #3e7691 !important;
+    outline: none;
+    box-shadow: 0 3px 15px rgba(90, 169, 208, 0.3) !important;
+    font-weight: 350;
+}
+
+.input_login_on_error:focus,
+.input_login_on_error_pswd:focus,
+.input_login_on_error_pswd-duplicate:focus,
+.input_login_on_error_pswd-duplicate1:focus {
+    border: 2px solid #9c3a3a;
+    outline: none;
+    animation: none;
+}
+
+/* ДЛЯ ЛОГИНА===================================================================================================================*/
+
+
+
+
+
+
+.text--one{
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 45px;
+    font-weight: 500;
+}
+
+.text--two{
+    position: absolute;
+    top: 23%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    font-weight: 300;
+    white-space: nowrap;
+}
+
+.text--three{
+    position: absolute;
+    top: 86%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+}
+
+.text--four{
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-decoration: none;
+    color: #5aa9d0;
+    font-weight: 500;
+    font-size: 20px;
+}
+.input{
+    border-radius: 5px;
+    border: 2px solid #5aa9d0;
+    width: 320px;
+    height: 35px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    font-weight: 300;
+    font-size: 18px;
+    text-indent: 15px;
+    font-family: "main1", "Segoe UI";
+}
+.input:hover {
+    border: 2px solid #5096b8;
+}
+.input:focus {
+    border: 2px solid #3e7691;
+    outline: none;
+    box-shadow: 0 3px 15px rgba(90, 169, 208, 0.3);
+    font-weight: 400;
+    font-size: 20px;
+}
+.input--one{
+    position: absolute;
+    top: 53%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.input_login_on_error{
+    border-radius: 5px;
+    border: 2px solid #5aa9d0;
+    width: 320px;
+    height: 35px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    font-weight: 300;
+    font-size: 18px;
+    text-indent: 15px;
+    font-family: "main", "Segoe UI";
+    position: absolute;
+    top: 53%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: border 0.5s ease;
+    animation: fadeInError 1s ease-in forwards;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+}
+
+.input_login_on_error_pswd{
+    border-radius: 5px;
+    border: 2px solid #5aa9d0;
+    width: 320px;
+    height: 35px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    font-weight: 300;
+    font-size: 18px;
+    text-indent: 15px;
+    font-family: "main", "Segoe UI";
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: border 0.5s ease;
+    animation: fadeInError 1s ease-in forwards;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+}
+.logo-image{
+    position: absolute;
+    top: 52%;
+    left: 8%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+}
+
+.pswd-image{
+    position: absolute;
+    top: 64%;
+    left: 8%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+}
+.input--two{
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+
+/* ДЛЯ РЕГИСТРАЦИИ=================================================================================================================*/
+
+
+.input--duplicate-one{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.input--duplicate-two{
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.input--duplicate-three{
+    position: absolute;
+    top: 64%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.logo-image-duplicate{
+    position: absolute;
+    top: 39%;
+    left: 8%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+}
+.pswd-image-duplicate{
+    position: absolute;
+    top: 51%;
+    left: 8%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+}
+.pswd-image-duplicate1{
+    position: absolute;
+    top: 63%;
+    left: 8%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+}
+.input_login_on_error_pswd-duplicate{
+    border-radius: 5px;
+    border: 2px solid #5aa9d0;
+    width: 320px;
+    height: 35px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    font-weight: 300;
+    font-size: 18px;
+    text-indent: 15px;
+    font-family: "main", "Segoe UI";
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: border 0.5s ease;
+    animation: fadeInError 1s ease-in forwards;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+}
+.input_login_on_error_pswd-duplicate1{
+    border-radius: 5px;
+    border: 2px solid #5aa9d0;
+    width: 320px;
+    height: 35px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    font-weight: 300;
+    font-size: 18px;
+    text-indent: 15px;
+    font-family: "main", "Segoe UI";
+    position: absolute;
+    top: 64%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: border 0.5s ease;
+    animation: fadeInError 1s ease-in forwards;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+}
+
+
+
+/* Анимации=========================================================================================================================*/
+
+
+
+
+
+
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 40%);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+@keyframes fadeInError {
+    0% { 
+        border-color: #5aa9d0;
+    }
+    50% { 
+        border-color: #a55d9e;
+    }
+    100% { 
+        border-color: #d34e4e;
+    }
+}
+
+
+
+
+/* Адаптивность=======================================================================================================================*/
+@media (max-width: 480px) {
+    html, body {
+        overflow: auto;  /* на телефоне нужен скролл */
+    }
+    
+    .box-auth {
+        width: 95%;
+        height: auto;
+        min-height: 85vh;
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        margin: 20px auto;
+        padding: 20px 0;
+    }
+    
+    /* Переопределяем абсолютное позиционирование */
+    .text--one, .text--two, .text--three, .text--four,
+    .input--one, .input--two,
+    .input--duplicate-one, .input--duplicate-two, .input--duplicate-three,
+    .button, .eye_button,
+    .logo-image, .pswd-image,
+    .logo-image-duplicate, .pswd-image-duplicate, .pswd-image-duplicate1,
+    .input_login_on_error, .input_login_on_error_pswd,
+    .input_login_on_error_pswd-duplicate, .input_login_on_error_pswd-duplicate1 {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        transform: none;
+        margin: 15px auto;
+        display: block;
+    }
+    
+    .text--one {
+        font-size: 28px;
+        margin-top: 30px;
+        text-align: center;
+    }
+    
+    .text--two {
+        font-size: 14px;
+        white-space: normal;
+        text-align: center;
+        padding: 0 20px;
+    }
+    
+    .text--three, .text--four {
+        text-align: center;
+        margin: 10px auto;
+    }
+    
+    .input, .input_login_on_error, .input_login_on_error_pswd,
+    .input_login_on_error_pswd-duplicate, .input_login_on_error_pswd-duplicate1 {
+        width: 85%;
+        margin: 10px auto;
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+    }
+    
+    .button {
+        width: 85%;
+        margin: 20px auto;
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+    }
+    
+    .eye_button {
+        width: 40px;
+        height: 40px;
+        margin: 10px auto;
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+    }
+    
+    .logo-image, .pswd-image,
+    .logo-image-duplicate, .pswd-image-duplicate, .pswd-image-duplicate1 {
+        display: none;
+    }
+    
+    .text--error {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        text-align: center;
+        padding: 0;
+        margin: 10px auto;
+        white-space: normal;
+    }
+}
+
+/* ПЛАНШЕТЫ (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .box-auth {
+        width: 500px;
+        height: 500px;
+    }
+    
+    .input, .input_login_on_error, .input_login_on_error_pswd,
+    .input_login_on_error_pswd-duplicate, .input_login_on_error_pswd-duplicate1 {
+        width: 350px;
+    }
+    
+    .text--one {
+        font-size: 48px;
+        top: 12%;
+    }
+    
+    .text--two {
+        font-size: 18px;
+        top: 24%;
+    }
+    
+    .button {
+        width: 180px;
+        height: 35px;
+        font-size: 18px;
+        top: 80%;
+    }
+    
+    .eye_button {
+        transform: scale(0.8);
+        left: 85%;
+    }
+    
+    .logo-image, .pswd-image,
+    .logo-image-duplicate, .pswd-image-duplicate, .pswd-image-duplicate1 {
+        width: 35px;
+        left: 7%;
+    }
+}

@@ -1,0 +1,283 @@
+
+/* Общие==============================================================================================================*/
+html, body {
+    overflow: hidden;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+@font-face {
+    font-family: 'main';
+    src: url('../fonts/ChironGoRoundTC-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+.background_create {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-image: url("../images/backgroud_create_cart.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    
+}
+.box-create{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 800px;
+    height: 800px;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    animation: slideUp 0.7s ease-out;
+    outline: 3px solid #5aa9d0;
+    background-color: white;
+}
+
+/* Левая колонка =====================================================================================================*/
+.left_column {
+    width: 65px;
+    height: 100vh;
+    background-color: white;
+    outline: 3px solid #2c84af;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: width 0.4s ease;
+    flex-shrink: 0;
+    position: relative;
+    margin-left: -6px;
+}
+
+.left_column:hover {
+    width: 250px;
+}
+
+.profile {
+    width: 58px;
+    height: 63px;
+    margin-top: 10px;
+    margin-left: 4px;
+}
+
+.first_link {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    position: absolute;
+    top: 30px;
+    left: 75px;
+    font-weight: 800;
+    font-size: 25px;
+    font-family: "main", "Segoe UI";
+    white-space: nowrap;
+    padding-bottom: 5px;
+    display: inline-block;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.first_link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #2c84af;
+    transition: width 0.3s ease;
+}
+
+.first_link_active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.first_link_active::after {
+    width: 100%;
+}
+
+.content {
+    flex: 1;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    height: 100vh;
+    
+    scrollbar-width: none;
+}
+
+.content::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+/* Основное===========================================================================================================*/
+
+.text{
+    font-family: "main", "Segoe UI";
+}
+
+
+.text--one{
+    position: absolute;
+    left: 50%;
+    top: 3%;
+    transform: translate(-50%, -50%);
+    font-weight: 450;
+    white-space: nowrap;
+}
+
+.text--two{
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    transform: translate(-50%, -50%);
+    font-weight: 450;
+    font-size: 20px;
+}
+
+.text--three{
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, -50%);
+    font-weight: 450;
+    font-size: 20px;
+    border: 2px solid #5aa9d0;
+    border-radius: 10px;
+}
+.text--four{
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    transform: translate(-50%, -50%);
+    font-weight: 450;
+    font-size: 20px;
+}
+.input, .textarea {
+    border-radius: 5px;
+    border: 2px solid #5aa9d0;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    font-weight: 300;
+    font-size: 18px;
+    font-family: "main1", "Segoe UI";
+    box-sizing: border-box;
+}
+
+.input {
+    height: 35px;
+    text-indent: 15px;
+    animation: all 0.7s ease-out
+}
+
+.textarea {
+    padding: 15px;
+    resize: none;
+}
+
+.input--one {
+    position: absolute;
+    top: 12%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+}
+
+.textarea--two {
+    position: absolute;
+    top: 23%;
+    left: 41%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 100px;
+}
+
+.textarea--three {
+    position: absolute;
+    top: 51%;
+    left: 47%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    height: 300px;
+}
+
+.textarea--four {
+    position: absolute;
+    top: 78%;
+    left: 41%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 100px;
+}
+.input:hover {
+    border: 2px solid #5096b8;
+}
+.input:focus {
+    border: 2px solid #3e7691;
+    outline: none;
+    box-shadow: 0 3px 15px rgba(90, 169, 208, 0.3);
+    font-weight: 400;
+    font-size: 20px;
+}
+.textarea:hover {
+    border: 2px solid #5096b8;
+}
+.textarea:focus {
+    border: 2px solid #3e7691;
+    outline: none;
+    box-shadow: 0 3px 15px rgba(90, 169, 208, 0.3);
+    font-weight: 400;
+    font-size: 20px;
+}
+.button{
+    font-family: "main", "Segoe UI";
+    color: black;
+    width: 150px;
+    height: 30px;
+    position: absolute;
+    top: 95%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    font-weight: 600;
+    outline: none;
+    border-radius: 5px;
+    background: none; 
+    border: 2px solid #5aa9d0;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+}
+.button:hover {
+    border: 2px solid #5096b8;
+    font-weight: 600;
+}
+.button:active {
+    border: 2px solid #3e7691;
+    outline: none;
+    box-shadow: 0 3px 15px rgba(90, 169, 208, 0.3);
+    font-weight: 600;
+}
+.button-active {
+    border: 2px solid #3e7691 !important;
+    outline: none;
+    box-shadow: 0 3px 15px rgba(90, 169, 208, 0.3) !important;
+    font-weight: 600;
+}
+/* Анимации===========================================================================================================*/
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 40%);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
