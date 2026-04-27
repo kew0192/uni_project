@@ -123,57 +123,6 @@ html, body {
     margin-bottom: 80px;
 }
 
-/* Карточки */
-.holder_diet {
-    background-image: url("../images/diet.jpg");
-    background-position: left 0px top -100px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    border-radius: 16px;
-    padding: 30px;
-    height: 200px;
-    overflow-y: auto;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-    outline: 3px solid #2c84af;
-    position: relative;
-    color: #2c84af;
-    overflow: hidden;
-}
-
-/* Полностью белое полотно */
-.holder_diet::before {
-    content: '';
-    position: absolute;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: white;
-    z-index: 0;
-}
-
-/* Контент поверх белого полотна */
-.holder_diet > * {
-    position: relative;
-    z-index: 1;
-}
-
-/* Стили текста */
-.holder_diet h3 {
-    margin: 0 0 10px 0;
-    color: #2c84af;
-}
-
-.holder_diet p {
-    color: #333;
-    margin: 0;
-}
-
-.holder_diet:hover, .holder_program:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
 
 .empty_holder {
     width: 100%;
@@ -231,6 +180,8 @@ html, body {
     position: relative;
     color: #2c84af;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Полностью белое полотно */
@@ -251,59 +202,51 @@ html, body {
     z-index: 1;
 }
 
-/* Стили текста */
-.holder_diet h3 {
-    margin: 0 0 10px 0;
-    color: #2c84af;
-}
-
-.holder_diet p {
-    color: #333;
-    margin: 0;
-}
-
-.holder_diet:hover, .holder_program:hover {
+.holder_diet:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-.name_diet{
+/* Стили текста */
+.name_diet {
     font-family: "main", "Segoe UI";
     color: black !important;
-    position: absolute;
-    left: 50%;
-    top: 25%;
-    transform: translate(-50%, -50%);
-    white-space: nowrap;
-}
-.author_diet{
-    font-family: "main", "Segoe UI";
-    color: black !important;
-    position: absolute;
-    left: 15%;
-    top: 38%;
-    transform: translate(-50%, -50%);
-    white-space: nowrap;
-}
-.level_diet{
-    color: black !important;
-    font-family: "main", "Segoe UI";
-    position: absolute;
-    left: 15%;
-    top: 57%;
-    transform: translate(-50%, -50%);
-    white-space: nowrap;
-}
-.content_diet{
-    color: black !important;
-    font-family: "main", "Segoe UI";
-    position: absolute;
-    left: 15%;
-    top: 68%;
-    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 25px;
+    font-weight: 800;
+    margin: 30px 0 10px 0;
     white-space: nowrap;
 }
 
+.author_diet {
+    font-family: "main", "Segoe UI";
+    color: black !important;
+    font-size: 14px;
+    margin: 0 0 8px 0;
+    padding-left: 10px;
+}
+
+.level_diet {
+    color: black !important;
+    font-family: "main", "Segoe UI";
+    font-size: 13px;
+    margin: 0 0 5px 0;
+    padding-left: 10px;
+}
+
+.content_diet {
+    color: black !important;
+    font-family: "main", "Segoe UI";
+    font-size: 13px;
+    margin: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    line-height: 1.4;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
 
 /* Карточки программ==================================================================================================*/
 
@@ -313,83 +256,82 @@ html, body {
     background-size: cover;
     background-repeat: no-repeat;
     border-radius: 16px;
-    padding: 30px;
-    height: 200px;
-    overflow-y: auto;
+    padding: 20px;
+    height: 220px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
     outline: 3px solid #2c84af;
     position: relative;
     color: #2c84af;
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
+/* Полностью белое полотно */
 .holder_program::before {
     content: '';
     position: absolute;
-    top: 60px;
+    top: 50px;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: calc(100% - 50px);
     background: white;
+    border-radius: 0 0 16px 16px;
     z-index: 0;
 }
 
+/* Контент поверх белого полотна */
 .holder_program > * {
     position: relative;
     z-index: 1;
 }
 
-.holder_program h3 {
-    margin: 0 0 10px 0;
-    color: #2c84af;
-}
-
-.holder_program p {
-    color: #333;
-    margin: 0;
-}
-
-.holder_program:hover, .holder_program:hover {
+.holder_program:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-.name_program{
+/* Стили текста для программ */
+.name_program {
     font-family: "main", "Segoe UI";
     color: black !important;
-    position: absolute;
-    left: 50%;
-    top: 25%;
-    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 25px;
+    font-weight: 800;
+    margin: 30px 0 10px 0;
     white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
 }
-.author_program{
+
+.author_program {
     font-family: "main", "Segoe UI";
     color: black !important;
-    position: absolute;
-    left: 15%;
-    top: 38%;
-    transform: translate(-50%, -50%);
-    white-space: nowrap;
+    font-size: 14px;
+    margin: 0 0 8px 0;
+    padding-left: 10px;
 }
-.level_program{
+
+.level_program {
     color: black !important;
     font-family: "main", "Segoe UI";
-    position: absolute;
-    left: 15%;
-    top: 57%;
-    transform: translate(-50%, -50%);
-    white-space: nowrap;
+    font-size: 13px;
+    margin: 0 0 5px 0;
+    padding-left: 10px;
 }
-.content_program{
+
+.content_program {
     color: black !important;
     font-family: "main", "Segoe UI";
-    position: absolute;
-    left: 15%;
-    top: 68%;
-    transform: translate(-50%, -50%);
-    white-space: nowrap;
+    font-size: 13px;
+    margin: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    line-height: 1.4;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 
 

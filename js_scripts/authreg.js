@@ -118,6 +118,8 @@ button_to_site.addEventListener('click', async () => {
         
         if (result.success) {
             window.location.href = '/main.html';
+            localStorage.setItem('accessToken', result.access_token);
+            localStorage.setItem('refreshToken', result.refresh_token);
             login_input.classList.remove('input_login_on_error');
             login_input.classList.add('input', 'duplicate-one');
             password_input.classList.remove('input_login_on_error_pswd-duplicate');

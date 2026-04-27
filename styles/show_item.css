@@ -1,0 +1,190 @@
+
+/* Общие==============================================================================================================*/
+html, body {
+    overflow: scroll;
+    overflow-x: hidden;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+@font-face {
+    font-family: 'main';
+    src: url('../fonts/ChironGoRoundTC-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+.background_create {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    
+}
+.box-create{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 900px;
+    min-height: 100vh;
+    height: fit-content;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    outline: 3px solid #5aa9d0;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Левая колонка =====================================================================================================*/
+.left_column {
+    width: 65px;
+    height: 100vh;
+    background-color: white;
+    outline: 3px solid #2c84af;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: width 0.4s ease;
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    left: 0;
+    margin-left: -6px;
+    overflow: hidden;
+}
+
+.left_column:hover {
+    width: 250px;
+}
+
+.profile {
+    width: 58px;
+    height: 63px;
+    margin-top: 10px;
+    margin-left: 4px;
+}
+
+.first_link {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    position: absolute;
+    top: 30px;
+    left: 75px;
+    font-weight: 800;
+    font-size: 25px;
+    font-family: "main", "Segoe UI";
+    white-space: nowrap;
+    padding-bottom: 5px;
+    display: inline-block;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.first_link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #2c84af;
+    transition: width 0.3s ease;
+}
+
+.first_link_active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.first_link_active::after {
+    width: 100%;
+}
+
+.content {
+    flex: 1;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    height: 100vh;
+    scrollbar-width: none;
+    padding: 20px;
+}
+
+.content::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+/* Основное===========================================================================================================*/
+.image{
+    width: 100%;
+    height: 35cap;
+}
+.text{
+    font-family: "main", "Segoe UI";
+}
+
+
+.text--one{
+    font-weight: 450;
+}
+
+.text--one:nth-child(3) { font-weight: 450; margin-left: -670px; }
+.text--one:nth-child(4) { font-weight: 330; margin-left: 80px;}
+.text--one:nth-child(5) { font-weight: 450; margin-left: -620px; }
+.text--one:nth-child(6) { font-weight: 330; margin-left: 80px;}
+.text--one:nth-child(7) { font-weight: 450; margin-left: -650px; }
+.text--one:nth-child(8) { font-weight: 330; margin-left: 80px; }
+
+
+.garbage{
+    position: relative;
+    background-image: url("../images/garbage.jpg");
+    margin-left: 147cap;
+    width: 80px;
+    height: 80px;
+    border: none;
+    transform: scale(0.7);
+}
+.garbage:hover{
+    transform: scale(0.6);
+}
+.garbage:active{
+    transform: scale(0.7);
+}
+
+.pen{
+    position: relative;
+    background-image: url("../images/pen.jpg");
+    margin-left: -111cap;
+    width: 80px;
+    height: 80px;
+    border: none;
+    transform: scale(0.7);
+}
+.pen:hover{
+    transform: scale(0.6);
+}
+.pen:active{
+    transform: scale(0.7);
+}
+/* Анимации===========================================================================================================*/
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 40%);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
