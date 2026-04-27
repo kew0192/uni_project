@@ -47,6 +47,7 @@ func main() {
 	http.HandleFunc("/get_item", MiddleWare(get_item_on_id))
 	http.HandleFunc("/delete_item", MiddleWare(delete_item))
 	http.HandleFunc("/updateitem", MiddleWare(update_item))
+	http.HandleFunc("/search", MiddleWare((search)))
 	log.Println("Сервер запущен")
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
@@ -142,4 +143,31 @@ func update_item(w http.ResponseWriter, r *http.Request) {
 	json.Unmarshal(body, &request)
 	command := `UPDATE item SET name = $1, description = $2, main = $3, results = $4 WHERE id = $5;`
 	db.Exec(context.Background(), command, request.Name, request.Description, request.Main, request.Results, request.Id)
+}
+
+func search(w http.ResponseWriter, r *http.Request) {
+	var request struct {
+		Search string `json:"search"`
+	}
+	body, _ := io.ReadAll(r.Body)
+	json.Unmarshal(body, &request)
+	query := `
+        SELECT 
+            id,
+            name,
+            description,
+            main,
+            results,
+            type,
+            author
+        FROM item
+        WHERE name % $1 OR description % $1
+        ORDER BY similarity(name, $1) DESC
+    `
+
+	rows, _ := db.Query(context.Background(), query, request.Search)
+	defer rows.Close()
+	items, _ := pgx.CollectRows(rows, pgx.RowToStructByPos[Item])
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(items)
 }

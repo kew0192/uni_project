@@ -96,6 +96,84 @@ html, body {
     width: 100%;
 }
 
+.exit {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    position: absolute;
+    top: 95%;
+    left: 75px;
+    font-weight: 800;
+    font-size: 25px;
+    font-family: "main", "Segoe UI";
+    white-space: nowrap;
+    padding-bottom: 5px;
+    display: inline-block;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.exit::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #2c84af;
+    transition: width 0.3s ease;
+}
+
+.exit_active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.exit_active::after {
+    width: 100%;
+}
+
+.mobile {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    position: absolute;
+    top: 85%;
+    left: 75px;
+    font-weight: 800;
+    font-size: 25px;
+    font-family: "main", "Segoe UI";
+    padding-bottom: 5px;
+    display: inline-block;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    text-align: left;
+}
+
+.mobile::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #2c84af;
+    transition: width 0.3s ease;
+}
+
+.mobile_active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.mobile_active::after {
+    width: 100%;
+}
+
 .content {
     flex: 1;
     overflow-y: auto;
@@ -333,6 +411,34 @@ html, body {
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
 }
+
+/* Поисковая строка ==================================================================================================*/
+
+.search{
+    position: relative;
+    top: 2%;
+    left: 36%;
+    border-radius: 15px;
+    border: 2px solid #52b0df;
+    width: 480px;
+    height: 35px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    font-weight: 300;
+    font-size: 18px;
+    text-indent: 15px;
+    font-family: "main1", "Segoe UI";
+}
+.search:hover {
+    border: 2px solid #5096b8;
+}
+.search:focus {
+    border: 2px solid #3e7691;
+    outline: none;
+    box-shadow: 0 3px 15px rgba(90, 169, 208, 0.3);
+    font-weight: 400;
+    font-size: 20px;
+}
+
 
 
 /* Адаптивность ======================================================================================================*/

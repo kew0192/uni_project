@@ -102,6 +102,84 @@ html, body {
     width: 100%;
 }
 
+.exit {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    position: absolute;
+    top: 95%;
+    left: 75px;
+    font-weight: 800;
+    font-size: 25px;
+    font-family: "main", "Segoe UI";
+    white-space: nowrap;
+    padding-bottom: 5px;
+    display: inline-block;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.exit::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #2c84af;
+    transition: width 0.3s ease;
+}
+
+.exit_active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.exit_active::after {
+    width: 100%;
+}
+
+.mobile {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    position: absolute;
+    top: 85%;
+    left: 75px;
+    font-weight: 800;
+    font-size: 25px;
+    font-family: "main", "Segoe UI";
+    padding-bottom: 5px;
+    display: inline-block;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    text-align: left;
+}
+
+.mobile::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #2c84af;
+    transition: width 0.3s ease;
+}
+
+.mobile_active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.mobile_active::after {
+    width: 100%;
+}
+
 .content {
     flex: 1;
     overflow-y: auto;

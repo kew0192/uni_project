@@ -8,6 +8,22 @@ left_column.addEventListener('mouseenter', () => {
 left_column.addEventListener('mouseleave', () => {
     first_link.classList.remove('first_link_active');
 });
+
+left_column.addEventListener('mouseenter', () => {
+    exit.classList.add('exit_active');
+});
+
+left_column.addEventListener('mouseleave', () => {
+    exit.classList.remove('exit_active');
+});
+
+left_column.addEventListener('mouseenter', () => {
+    mobile.classList.add('mobile_active');
+});
+
+left_column.addEventListener('mouseleave', () => {
+    mobile.classList.remove('mobile_active');
+});
 const button = document.getElementById('go_to_next_stage');
 const choice = document.getElementById('choice');
 button.addEventListener('click', () => {

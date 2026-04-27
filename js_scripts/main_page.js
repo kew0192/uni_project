@@ -1,5 +1,7 @@
 const left_column = document.getElementById("left_column");
 const first_link = document.getElementById('first_link');
+const exit = document.getElementById('exit');
+const mobile = document.getElementById('mobile');
 
 left_column.addEventListener('mouseenter', () => {
     first_link.classList.add('first_link_active');
@@ -8,6 +10,86 @@ left_column.addEventListener('mouseenter', () => {
 left_column.addEventListener('mouseleave', () => {
     first_link.classList.remove('first_link_active');
 });
+
+left_column.addEventListener('mouseenter', () => {
+    exit.classList.add('exit_active');
+});
+
+left_column.addEventListener('mouseleave', () => {
+    exit.classList.remove('exit_active');
+});
+
+left_column.addEventListener('mouseenter', () => {
+    mobile.classList.add('mobile_active');
+});
+
+left_column.addEventListener('mouseleave', () => {
+    mobile.classList.remove('mobile_active');
+});
+/* Поисковая строка ================================================================================================= */
+
+const search = document.getElementById("search");
+const originalPlaceholder = search.placeholder;
+search.addEventListener("focus", () => {
+    search.placeholder = "";
+});
+search.addEventListener("blur", () => {
+    if (search.value === "") {
+        search.placeholder = originalPlaceholder;
+    }
+});
+search.addEventListener("keypress", async (event) => {
+    if (event.key == "Enter"){
+        event.preventDefault();
+        const response = await fetch("http://localhost:8080/search", {
+            method: "POST",
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({search: search.value})
+        });
+        const result = await response.json();
+        const placeholder = document.getElementById("placeholder");
+        placeholder.innerHTML = '';
+        for (let i = 0; i < result.length; i++) {
+            if (result[i].Type_item == 0) {
+                placeholder.innerHTML += `
+                    <div class="holder_diet" id = ${result[i].Id}>
+                        <h1 class="name_diet">${result[i].Name}</h1><br>
+                        <h2 class="author_diet">Автор: ${result[i].Author}</h2><br>
+                        <h3 class="level_diet">Уровень: ${result[i].Type_item == 0 ? 'Начинающий' : 'Продвинутый'}</h3><br>
+                        <h3 class="content_diet">Описание: ${result[i].Description}</h3>
+                    </div>
+                `;
+            }
+            if (result[i].Type_item == 1) {
+                placeholder.innerHTML += `
+                    <div class="holder_program" id = ${result[i].Id}>
+                        <h1 class="name_program">${result[i].Name}</h1><br>
+                        <h2 class="author_program">Автор: ${result[i].Author}</h2><br>
+                        <h3 class="level_program">Уровень: ${result[i].Type_item == 1 ? 'Начинающий' : 'Продвинутый'}</h3><br>
+                        <h3 class="content_program">Описание: ${result[i].Description}</h3>
+                    </div>
+                `;
+            }
+
+
+        }
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const addButton = document.querySelector('.add');
 addButton.addEventListener('click', () => {
