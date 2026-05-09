@@ -70,32 +70,29 @@ button_to_site.addEventListener('click', async () => {
 
 
 
-        const response = await fetch("ТУТ БУДЕТ АЙПИ", {
+        const response = await fetch("https://ungeographical-overenviously-giuliana.ngrok-free.dev/auth/login", {
             method: "POST",
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({login_input_value, password_input_value})
+            body: JSON.stringify({email: login_input_value, password: password_input_value})
         });
         
         const result = await response.json();
         
-        if (result.success) {
+        if (response.ok) {
             window.location.href = '/main.html';
             localStorage.setItem('accessToken', result.access_token);
-            localStorage.setItem('accessToken', result.refresh_token);
             login_input.classList.remove('input_login_on_error');
             login_input.classList.add('input', 'input--one');
             password_input.classList.remove('input_login_on_error_pswd');
             password_input.classList.add('input', 'input--two');
             error_text.textContent = '';
         } else {
-            if (result.error === "User not found") {
-                error_text.textContent = 'Пользователя с таким именем не существует';
+            if (result.detail === "Неверный email или пароль") {
+                error_text.textContent = 'Неверный email или пароль';
                 login_input.classList.remove('input', 'input--one');
-                login_input.classList.add('input_login_on_error');               
-            } else if (result.error === "Wrong password") {
-                error_text.textContent = 'Неверный пароль';
                 password_input.classList.remove('input', 'input--two');
                 password_input.classList.add('input_login_on_error_pswd');
+                login_input.classList.add('input_login_on_error');               
             } else {
                 error_text.textContent = 'Ошибка';
             }

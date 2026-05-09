@@ -3,6 +3,10 @@ const first_link = document.getElementById('first_link');
 const exit = document.getElementById('exit');
 const mobile = document.getElementById('mobile');
 
+first_link.addEventListener("click", async () => {
+    window.location.href = '../profile.html';
+});
+
 left_column.addEventListener('mouseenter', () => {
     first_link.classList.add('first_link_active');
 });
@@ -77,8 +81,53 @@ search.addEventListener("keypress", async (event) => {
 });
 
 
+/* Фильтр ========================================================================================*/
+const main = document.getElementById("background_main");
+const filter = document.getElementById("filter");
+let filterWindow = null;
 
-
+filter.addEventListener("click", () => {
+    if (!filterWindow) {
+        filterWindow = document.createElement("div");
+        filterWindow.className = "filter_window";
+        filterWindow.id = "filter_window";
+        
+        filterWindow.innerHTML = `
+            <h1 class = "text">Фильтр</h1>
+            <select id="choice" class = "text1" name="choice">
+                <option value="diet">Диета</option>
+                <option value="program">Программа</option>
+                <option value="programanddiet">Оба</option>
+            </select>
+            <select id="choice2" class = "text2" name="choice">
+                <option value="oursandothers">И свои и чужие</option>
+                <option value="ours">Только свои</option>
+                <option value="others">Только чужие</option>
+                <option value="others">Избранные</option>
+            </select>
+            <button class = "button_filter" id = "button_filter">Готово</button>
+            `;
+        
+        main.appendChild(filterWindow);
+        
+        setTimeout(() => {
+            if (filterWindow) {
+                filterWindow.classList.add('slide_left');
+            }
+        }, 10);
+        
+    } else {
+        filterWindow.classList.remove('slide_left');
+        filterWindow.classList.add('slide_right');
+        
+        setTimeout(() => {
+            if (filterWindow) {
+                filterWindow.remove();
+                filterWindow = null;
+            }
+        }, 500);
+    }
+});
 
 
 

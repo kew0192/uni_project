@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 })
 
 if (localStorage.getItem("type") == 0){
-    document.getElementById("box").insertAdjacentHTML('afterbegin', '<img  src="/images/ddd.jpg" class = "image" sc>');
+    document.getElementById("box").insertAdjacentHTML('afterbegin', '<img  src="/images/1234.jpg" class = "image" sc>');
 }
 if (localStorage.getItem("type") == 1){
     document.getElementById("box").insertAdjacentHTML('afterbegin', '<img  src="/images/zal.jpg" class = "image" sc>');

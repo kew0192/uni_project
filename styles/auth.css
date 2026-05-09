@@ -1,7 +1,9 @@
 /* ДЛЯ ВСЕГО=================================================================================================================== */
 
 
-
+* {
+    transition: all 0.1s ease;
+}
 
 html, body {
     overflow: hidden;
@@ -194,6 +196,7 @@ html, body {
     font-size: 18px;
     text-indent: 15px;
     font-family: "main1", "Segoe UI";
+    transition: all 0.1s ease;
 }
 .input:hover {
     border: 2px solid #5096b8;
@@ -406,6 +409,8 @@ html, body {
         border-color: #d34e4e;
     }
 }
+
+
 
 
 

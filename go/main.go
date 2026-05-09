@@ -49,7 +49,9 @@ func main() {
 	http.HandleFunc("/updateitem", MiddleWare(update_item))
 	http.HandleFunc("/search", MiddleWare((search)))
 	log.Println("Сервер запущен")
+
 	log.Fatal(http.ListenAndServe(":8080", nil))
+
 }
 
 func create_item(w http.ResponseWriter, r *http.Request) {

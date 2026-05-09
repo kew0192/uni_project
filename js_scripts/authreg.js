@@ -108,18 +108,28 @@ button_to_site.addEventListener('click', async () => {
 
     
 
-        const response = await fetch("ТУТ БУДЕТ АЙПИ", {
+        const response = await fetch("https://ungeographical-overenviously-giuliana.ngrok-free.dev/auth/register", {
             method: "POST",
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({login_input_value, password_input_value})
+            body: JSON.stringify({email: login_input_value, password: password_input_value})
         });
-        
         const result = await response.json();
+
         
-        if (result.success) {
-            window.location.href = '/main.html';
+        
+        if (response.ok) {
             localStorage.setItem('accessToken', result.access_token);
-            localStorage.setItem('refreshToken', result.refresh_token);
+            const response_profile = await fetch("https://ungeographical-overeniously-giuliana.ngrok-free.dev/profile/me", {
+                method: "PATCH",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem("accessToken")}`
+                },
+                body: JSON.stringify({
+                    "name": login_input_value,
+                    "age": 0,
+            })
+            });
             login_input.classList.remove('input_login_on_error');
             login_input.classList.add('input', 'duplicate-one');
             password_input.classList.remove('input_login_on_error_pswd-duplicate');
@@ -127,11 +137,12 @@ button_to_site.addEventListener('click', async () => {
             password_input_dup.classList.remove('input_login_on_error_pswd-duplicate1');
             password_input_dup.classList.add('input', 'duplicate-three');
             error_text.textContent = '';
+            window.location.href = '/main.html';
         } else {
-            if (result.error === "User exists") {
+            if (result.detail === "Пользователь с таким email уже существует") {
                 login_input.classList.remove('input', 'duplicate-one');
                 login_input.classList.add('input_login_on_error');
-                error_text.textContent = 'Имя пользователя занято';
+                error_text.textContent = 'Пользователь с таким email уже существует';
             }
              else {
                 error_text.textContent = 'Ошибка';
