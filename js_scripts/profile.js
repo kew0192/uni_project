@@ -70,3 +70,14 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 
+const exit_button = document.getElementById("back");
+
+exit_button.addEventListener("click", async () => {
+    window.location.href = '../main.html';
+});
+
+const edit_button = document.getElementById("edit");
+
+edit_button.addEventListener("click", async () => {
+    window.location.href = "../update_profile.html";
+});
