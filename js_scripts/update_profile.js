@@ -1,8 +1,31 @@
+async function validateToken() {
+    const response = await fetch('https://ungeographical-overenviously-giuliana.ngrok-free.dev/auth/token/validate', {
+        method: "GET",
+        headers: {'Content-Type': 'application/json','ngrok-skip-browser-warning': 'true','Authorization': `Bearer ${localStorage.getItem("accessToken")}`}
+    });
+    const result = await response.json();
+    if (result.valid === true){
+        return;
+    } else {
+        window.location.href = "../index.html";
+    }
+}
+
+
+
+
+
 const left_column = document.getElementById("left_column");
 const first_link = document.getElementById('first_link');
 const exit = document.getElementById('exit');
 const mobile = document.getElementById('mobile');
-
+first_link.addEventListener("click", async () => {
+    const isValid = await validateToken();
+    if (isValid == false) {
+        return;
+    }
+    window.location.href = '../profile.html';
+});
 left_column.addEventListener('mouseenter', () => {
     first_link.classList.add('first_link_active');
 });
@@ -31,6 +54,10 @@ left_column.addEventListener('mouseleave', () => {
 
 
 document.addEventListener('DOMContentLoaded', async () => {
+    const isValid = await validateToken();
+    if (isValid == false) {
+        return;
+    }
     const name = document.getElementById("Name");
     const email = document.getElementById("Email");
     const age = document.getElementById("Age");
@@ -60,15 +87,23 @@ document.addEventListener('DOMContentLoaded', async () => {
 const exit_button = document.getElementById("back");
 
 exit_button.addEventListener("click", async () => {
+    const isValid = await validateToken();
+    if (isValid == false) {
+        return;
+    }
     window.location.href = '../profile.html';
 });
 
 const edit_button = document.getElementById("edit");
 
 edit_button.addEventListener("click", async () => {
+    const isValid = await validateToken();
+    if (isValid == false) {
+        return;
+    }
     const new_name = document.getElementById("Name");
     const new_age = document.getElementById("Age");
-    const response_profile = await fetch("https://ungeographical-overeniously-giuliana.ngrok-free.dev/profile/me", {
+    const response_profile = await fetch("https://ungeographical-overenviously-giuliana.ngrok-free.dev/profile/me", {
                 method: "PATCH",
                 headers: {
                     'ngrok-skip-browser-warning': 'true',

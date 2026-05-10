@@ -119,18 +119,6 @@ button_to_site.addEventListener('click', async () => {
         
         if (response.ok) {
             localStorage.setItem('accessToken', result.access_token);
-            const response_profile = await fetch("https://ungeographical-overeniously-giuliana.ngrok-free.dev/profile/me", {
-                method: "PATCH",
-                headers: {
-                    'ngrok-skip-browser-warning': 'true',
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${localStorage.getItem("accessToken")}`
-                },
-                body: JSON.stringify({
-                    "name": login_input_value,
-                    "age": 0
-            })
-            });
             login_input.classList.remove('input_login_on_error');
             login_input.classList.add('input', 'duplicate-one');
             password_input.classList.remove('input_login_on_error_pswd-duplicate');
@@ -138,7 +126,7 @@ button_to_site.addEventListener('click', async () => {
             password_input_dup.classList.remove('input_login_on_error_pswd-duplicate1');
             password_input_dup.classList.add('input', 'duplicate-three');
             error_text.textContent = '';
-            
+            window.location.href = '/index.html';
         } else {
             if (result.detail === "Пользователь с таким email уже существует") {
                 login_input.classList.remove('input', 'duplicate-one');

@@ -1,3 +1,5 @@
+localStorage.setItem("index", "0");
+
 //================================================================================================================================
 const eye_button = document.getElementById("eye_button");
 const input_password = document.getElementById("password")
@@ -79,8 +81,26 @@ button_to_site.addEventListener('click', async () => {
         const result = await response.json();
         
         if (response.ok) {
-            window.location.href = '/main.html';
             localStorage.setItem('accessToken', result.access_token);
+            if (localStorage.getItem("index") == "0"){
+                const response_profile = await fetch("https://ungeographical-overenviously-giuliana.ngrok-free.dev/profile/me", {
+                method: "PATCH",
+                headers: {
+                    'ngrok-skip-browser-warning': 'true',
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem("accessToken")}`
+                },
+                body: JSON.stringify({
+                    "name": login_input_value,
+                    "age": 0
+                })
+                });
+                localStorage.setItem("index", "1");
+            }
+
+
+
+            window.location.href = '/main.html';
             login_input.classList.remove('input_login_on_error');
             login_input.classList.add('input', 'input--one');
             password_input.classList.remove('input_login_on_error_pswd');

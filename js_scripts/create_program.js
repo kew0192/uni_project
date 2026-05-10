@@ -1,6 +1,27 @@
+async function validateToken() {
+    const response = await fetch('https://ungeographical-overenviously-giuliana.ngrok-free.dev/auth/token/validate', {
+        method: "GET",
+        headers: {'Content-Type': 'application/json','ngrok-skip-browser-warning': 'true','Authorization': `Bearer ${localStorage.getItem("accessToken")}`}
+    });
+    const result = await response.json();
+    if (result.valid === true){
+        return;
+    } else {
+        window.location.href = "../index.html";
+    }
+}
+
+
+
 const left_column = document.getElementById("left_column");
 const first_link = document.getElementById('first_link');
-
+first_link.addEventListener("click", async () => {
+    const isValid = await validateToken();
+    if (isValid == false) {
+        return;
+    }
+    window.location.href = '../profile.html';
+});
 left_column.addEventListener('mouseenter', () => {
     first_link.classList.add('first_link_active');
 });
@@ -34,6 +55,10 @@ const Results = document.getElementById("Results");
 const button = document.getElementById("go_to_next_stage");
 
 button.addEventListener("click", async () => {
+    const isValid = await validateToken();
+    if (isValid == false) {
+        return;
+    }
     const response = await fetch("http://localhost:8080/createitem", {
             method: "POST",
             headers: {'Content-Type': 'application/json'},

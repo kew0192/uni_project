@@ -1,9 +1,28 @@
+/* ВАЛИДАЦИЯ ТОКЕНОВ */
+
+async function validateToken() {
+    const response = await fetch('https://ungeographical-overenviously-giuliana.ngrok-free.dev/auth/token/validate', {
+        method: "GET",
+        headers: {'Content-Type': 'application/json','ngrok-skip-browser-warning': 'true','Authorization': `Bearer ${localStorage.getItem("accessToken")}`}
+    });
+    const result = await response.json();
+    if (result.valid === true){
+        return;
+    } else {
+        window.location.href = "../index.html";
+    }
+}
+
 const left_column = document.getElementById("left_column");
 const first_link = document.getElementById('first_link');
 const exit = document.getElementById('exit');
 const mobile = document.getElementById('mobile');
 
 first_link.addEventListener("click", async () => {
+    const isValid = await validateToken();
+    if (isValid == false) {
+        return;
+    }
     window.location.href = '../profile.html';
 });
 
@@ -43,6 +62,10 @@ search.addEventListener("blur", () => {
     }
 });
 search.addEventListener("keypress", async (event) => {
+    const isValid = await validateToken();
+    if (isValid == false) {
+        return;
+    }
     if (event.key == "Enter"){
         event.preventDefault();
         const response = await fetch("http://localhost:8080/search", {
@@ -86,7 +109,11 @@ const main = document.getElementById("background_main");
 const filter = document.getElementById("filter");
 let filterWindow = null;
 
-filter.addEventListener("click", () => {
+filter.addEventListener("click", async () => {
+    const isValid = await validateToken();
+    if (isValid == false) {
+        return;
+    }
     if (!filterWindow) {
         filterWindow = document.createElement("div");
         filterWindow.className = "filter_window";
@@ -146,6 +173,7 @@ addButton.addEventListener('click', () => {
 });
 
 document.addEventListener('DOMContentLoaded', async () => {
+    validateToken();
     try {
         const response = await fetch("http://localhost:8080/getallitems", {
             method: "GET",
@@ -188,6 +216,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 document.addEventListener('click', function(e) {
+    validateToken();
     const diet = e.target.closest('.holder_diet');
     const program = e.target.closest('.holder_program');
     
@@ -207,80 +236,4 @@ document.addEventListener('click', function(e) {
 });
 
 
-/* Валидация токенов =================================================================================================*/
 
-async function getAccessToken(){
-    url = ""
-    let maxAttempt = 3;
-    let Attempt = 0;
-    while (Attempt < maxAttempt){
-        let refresh_token = localStorage.getItem('refreshToken')
-        const response = await fetch("ТУТ БУДЕТ АЙПИ", {
-            method: "POST",
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({refresh_token})
-        });
-        const result = await response.json();
-        if (result.error){
-            Attempt+=1;
-        }
-        else {
-            localStorage.setItem("accessToken", result.access_token)
-            return true; 
-        }
-    }
-    return false;
-}
-
-async function getRefreshToken(){
-    url = ""
-    let maxAttempt = 3;
-    let Attempt = 0;
-    while (Attempt < maxAttempt){
-        const response = await fetch("ТУТ БУДЕТ АЙПИ", {
-            method: "POST",
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({})
-        });
-        const result = await response.json();
-        if (result.error){
-            Attempt+=1;
-        }
-        else {
-            localStorage.setItem("refreshToken", result.refresh_token)
-            return true; 
-        }
-    }
-    return false;
-}
-
-async function getValidToken() {
-    let acc_token = localStorage.getItem('accessToken');
-    let ref_token = localStorage.getItem('refreshToken');
-    if (!ref_token) {
-        window.location.href = '/index.html';
-        return false;
-    }
-    try {
-        const payload_access_token = JSON.parse(atob(acc_token.split('.')[1]));
-        const expTime_access_token = payload_access_token.exp * 1000;
-        const payload_refresh_token = JSON.parse(atob(ref_token.split('.')[1]));
-        const expTime_refresh_token = payload_refresh_token.exp * 1000;
-        if (expTime_refresh_token - Date.now() < 60 * 1000){
-            let confirm = await getRefreshToken();
-            if (confirm == false){
-                window.location.href = '/index.html';
-                return false;
-            }
-        }
-        if (expTime_access_token - Date.now() < 60 * 1000) {
-            await getAccessToken();
-        }
-    } catch(e) {
-        console.log('Ошибка проверки токена');
-    }
-    
-    return true;
-}
-
-localStorage.setItem("login", "kew")
