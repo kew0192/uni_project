@@ -59,14 +59,24 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const response = await fetch("https://ungeographical-overenviously-giuliana.ngrok-free.dev/profile/me", {
             method: "GET",
-            headers: {'Content-Type': 'application/json'},
+            headers: {'Content-Type': 'application/json','ngrok-skip-browser-warning': 'true','Authorization': `Bearer ${localStorage.getItem("accessToken")}`},
         });
         
     const result = await response.json();
+
+    const response1 = await fetch("https://ungeographical-overenviously-giuliana.ngrok-free.dev/auth/me", {
+            method: "GET",
+            headers: {'Content-Type': 'application/json','ngrok-skip-browser-warning': 'true','Authorization': `Bearer ${localStorage.getItem("accessToken")}`},
+        });
+        
+    const result1 = await response1.json();
+
+
     
-    name.textContent = result.name;
-    email.textContent = result.age;
-    age.textContent = result.age;
+    name.textContent = `Имя: ${result.name}`;
+    email.textContent = `Почта: ${result1.email}`;
+    age.textContent = `Возраст: ${result.age}`;
+    localStorage.setItem("Email", result1.email)
 });
 
 

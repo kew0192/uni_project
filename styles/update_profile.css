@@ -231,28 +231,12 @@ html, body {
     font-size: 20px;
 }
 .text3{
-    border-radius: 5px;
-    border: 2px solid #5aa9d0;
-    width: 320px;
-    height: 40px;
-    margin-left: 50px;
+    font-family: "main", "Segoe UI";
+    text-align: left;
+    margin-left: 10%;
+    margin-right: 5%;
     margin-top: 20px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-    font-weight: 300;
-    font-size: 18px;
-    text-indent: 15px;
-    font-family: "main1", "Segoe UI";
-    transition: all 0.1s ease;  
-}
-.text3:hover {
-    border: 2px solid #5096b8;
-}
-.text3:focus {
-    border: 2px solid #3e7691;
-    outline: none;
-    box-shadow: 0 3px 15px rgba(90, 169, 208, 0.3);
-    font-weight: 400;
-    font-size: 20px;
+    white-space: pre-wrap;  
 }
 .text4{
     border-radius: 5px;
@@ -260,7 +244,7 @@ html, body {
     width: 320px;
     height: 40px;
     margin-left: 50px;
-    margin-top: 20px;
+    margin-top: 18px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
     font-weight: 300;
     font-size: 18px;
