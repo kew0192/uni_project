@@ -59,10 +59,17 @@ button.addEventListener("click", async () => {
     if (isValid == false) {
         return;
     }
+    const response1 = await fetch("https://ungeographical-overenviously-giuliana.ngrok-free.dev/profile/me", {
+            method: "GET",
+            headers: {'Content-Type': 'application/json','ngrok-skip-browser-warning': 'true','Authorization': `Bearer ${localStorage.getItem("accessToken")}`},
+        });
+        
+    const result1 = await response1.json();
     const response = await fetch("http://localhost:8080/createitem", {
             method: "POST",
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({Name: Name.value, Description: Description.value, Main: Main.value, Results: Results.value, Author: "Arthur", Type_item: 1})
+            body: JSON.stringify({Name: Name.value, Description: Description.value, Main: Main.value, Results: Results.value, Author: result1.name , Type_item: 1})
     });
+    
     window.location.href = '../main.html';
 })
